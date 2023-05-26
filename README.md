@@ -25,6 +25,8 @@ different implementations of the DD-API V3.
 - [OAS definition](#oas-definition)
 - [Semantic definition](#semantic-definition)
 
+Sample code in C# for the Proof of Concept is maintained [here](https://github.com/DigitaleDeltaOrg/dd-api-v3-CSharp).
+
 ## Definitions
 
 All the definition specifications have a semantic version system according to [semver.org](https://semver.org/).
@@ -145,9 +147,7 @@ The management and subscription endpoints are not yet implemented in the Proof o
 - As long as there is no official TimeseriesML JSON encoding, define our own encoding, based on
   [om-json](https://github.com/peterataylor/om-json).
 - Convert to the new Kennisplatform API's modular naming strategy.
-- Fix plantuml file.
 - Link to Kennisplatform API's OData module, when available.
-- $skiptoken/$orderby?
 
 ## History
 
