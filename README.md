@@ -12,7 +12,7 @@ Another standard is integrated into this standard: [SensorThings API](http://ope
 Management of entities (Thing and Actuator) are meshed with the [reference system](/required/reference.md) and it's specific data format is merged with the [observation responses](/Schemas/observation-schema.json).
 Control of Thing and Actuator are kept in their original endpoints.
 
-The [OM&S](https://github.com/opengeospatial/om-swg) implementation is a*strict* subset:
+The [OM&S](https://github.com/opengeospatial/om-swg) implementation is a *strict* subset:
 
 - Conforms to [OM&S](https://github.com/opengeospatial/om-swg)
 - Is a *minimal* requirement
