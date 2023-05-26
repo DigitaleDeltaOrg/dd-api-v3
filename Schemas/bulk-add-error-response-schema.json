@@ -1,0 +1,47 @@
+﻿{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"type": "object",
+	"definitions": {
+		"error": {
+			"type": "object",
+			"properties": {
+				"Property": {
+					"type": "string"
+				},
+				"Error": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"Property",
+				"Error"
+			]
+		},
+		"validationResult": {
+			"type": "object",
+			"properties": {
+				"Id": {
+					"type": "string"
+				},
+				"ValidationErrors": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": ["unknown", "invalid-in-context", "bad-value", "required", "not-allowed"]
+					}
+				}
+			}
+		}
+	},
+	"properties": {
+		"ValidationResults": {
+			"type": "array",
+			"items": {
+				"$ref": "#/definitions/validationResult"
+			}
+		}
+	},
+	"required": [
+		"ValidationResults"
+	]
+}

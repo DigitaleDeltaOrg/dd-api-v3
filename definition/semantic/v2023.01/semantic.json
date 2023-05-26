@@ -1,0 +1,80 @@
+{
+    "sources": 
+    [
+        { 
+            "referenceType": "parameter/parameter",
+            "uri": [ "https://aquo.nl/parameters", "https://ddecoapi.aquadesk.nl/v2/parameters?filter=type:eq:'TAXON'" ],
+            "organisation": [ "TWN", "AQUO" ],
+            "exclude": ["https://aquo.nl/quantity"],
+            "description": "parameter/parameter"
+         },
+         { 
+            "referenceType": "parameter/quantity",
+            "uri": [ "https://aquo/parameters/quantity" ],
+            "organisation": [ "AQUO" ],
+            "description": "parameter/quantity"
+         },
+         { 
+            "referenceType": "parameter/organisation",
+            "uri": [ "https://aquo.nl/parameters/organisation" ],
+            "organisation": [ "AQUO" ],
+            "description": "organisation"
+         },
+         { 
+            "referenceType": "parameter/observingprocedure",
+            "uri": [ "https://aquo.nl/parameters" ],
+            "organisation": [ "AQUO" ],
+            "description": "observing procedure"
+         },
+         { 
+            "referenceType": "parameter/lengthclass",
+            "uri": [ "https://aquo.nl/lengteklasse"],
+            "organisation": [ "AQUO" ],
+            "description": "length class"
+         },
+         { 
+            "referenceType": "parameter/gender",
+            "uri": [ "https://aquo.nl/geslacht"],
+            "organisation": [ "AQUO" ],
+            "description": "gender"
+         },
+         { 
+            "referenceType": "uom",
+            "uri": [ "https://aquo.nl/eenheid"],
+            "organisation": [ "AQUO" ],
+            "description": "unit of measure"
+         },
+         {
+            "referenceType": "parameter/taxontype",
+            "uri": [ "https://ddecoapi.aquadesk.nl/v2/taxontypes" ],
+            "organisation": [ "TWN" ],
+            "description": "taxon types"
+         },
+         {
+            "referenceType": "parameter/taxongroup",
+            "uri": [ "https://ddecoapi.aquadesk.nl/v2/taxongroups" ],
+            "organisation": [ "TWN" ],
+            "description": "taxon groups"
+         },
+        { 
+            "organisation": "HHN", 
+            "referenceType": "parameter/note", 
+            "uri": ""
+        },
+        { 
+            "organisation": "RWS", 
+            "referenceType": "parameter/note", 
+            "uri": "" 
+        },
+        { 
+            "organisation": "HHN", 
+            "referenceType": "foi", 
+            "uri": "" 
+        },
+        { 
+            "organisation": "RWS", 
+            "referenceType": "foi", 
+            "uri": "" 
+        }
+    ]
+}

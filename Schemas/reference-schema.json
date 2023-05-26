@@ -1,0 +1,59 @@
+﻿{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"definitions": {
+		"Geometry": {
+			"type": "object",
+			"required": [
+				"type",
+				"coordinates"
+			],
+			"oneOf": [
+				{
+					"#ref": "https://geojson.org/schema/Point.json"
+				},
+				{
+					"#ref": "https://geojson.org/schema/Polygon.json"
+				}
+			]
+		}
+	},
+	"type": "object",
+	"properties": {
+		"Type": {
+			"type": "string"
+		},
+		"Code": {
+			"type": "string"
+		},
+		"Description": {
+			"type": "string"
+		},
+		"ExternalKey": {
+			"type": "string"
+		},
+		"Source": {
+			"type": "string",
+			"format": "iri-reference"
+		},
+		"Organisation": {
+			"type": "string"
+		},
+		"ModifiedOn": {
+			"type": "string",
+			"format": "date-time"
+		},
+		"Geometry": {
+			"#ref": "#/definitions/Geometry"
+		}
+	},
+	"allowAdditionalProperties": true,
+	"required": [
+		"Type",
+		"Code",
+		"Description",
+		"ExternalKey",
+		"Source",
+		"Organisation",
+		"ModifiedOn"
+	]
+}

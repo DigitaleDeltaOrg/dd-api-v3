@@ -1,0 +1,94 @@
+﻿{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"type": "object",
+	"definitions": {
+		"observation": {
+			"type": "object",
+			"properties": {
+				"Id": {
+					"type": "string"
+				},
+				"Type": {
+					"type": "string"
+				},
+				"ResultTime": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"PhenomenonTime": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"ValidTime": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"Parameter": {
+					"type": "object",
+					"additionalProperties": {
+						"$ref": "./observation-common-schema.json#/definitions/ParameterReference"
+					}
+				},
+				"Metadata": {
+					"type": "object",
+					"additionalProperties": {
+						"type": "string"
+					}
+				},
+				"Foi": {
+					"$ref": "./reference-schema.json"
+				},
+				"Result": {
+					"oneOf": [
+						{
+							"$ref": "./observation-common-schema.json#/definitions/Measure"
+						},
+						{
+							"$ref": "./observation-common-schema.json#/definitions/Truth"
+						},
+						{
+							"$ref": "./observation-common-schema.json#/definitions/VocabTerm"
+						},
+						{
+							"$ref": "./observation-common-schema.json#/definitions/Count"
+						},
+						{
+							"$ref": "./observation-common-schema.json#/definitions/Timeseries"
+						},
+						{
+							"$ref": "./observation-common-schema.json#/definitions/Complex"
+						}
+					]
+				},
+				"RelatedObservation": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"Type": {
+								"type": "string"
+							},
+							"Observation": {
+								"$ref": "#/definitions/observation"
+							}
+						},
+						"required": [
+							"Type",
+							"Observation"
+						]
+					}
+				}
+			},
+			"required": [
+				"Id",
+				"Type",
+				"ResultTime",
+				"PhenomenonTime",
+				"ValidTime",
+				"Foi",
+				"Result"
+			]
+		}
+	}
+}
+

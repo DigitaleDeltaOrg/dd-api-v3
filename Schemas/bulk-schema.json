@@ -1,0 +1,118 @@
+﻿{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"type": "object",
+	"definitions": {
+		"observation": {
+			"type": "object",
+			"properties": {
+				"Id": {
+					"type": "string"
+				},
+				"Type": {
+					"type": "string"
+				},
+				"ResultTime": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"PhenomenonTime": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"ValidTime": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"Parameter": {
+					"type": "object",
+					"additionalProperties": {
+						"$ref": "./observation-common-schema.json#/definitions/ParameterReference"
+					}
+				},
+				"Metadata": {
+					"type": "object",
+					"additionalProperties": {
+						"type": "string"
+					}
+				},
+				"Foi": {
+					"type": "string"
+				},
+				"Result": {
+					"oneOf": [
+						{
+							"$ref": "./observation-common-schema.json#/definitions/Measure"
+						},
+						{
+							"$ref": "./observation-common-schema.json#/definitions/Truth"
+						},
+						{
+							"$ref": "./observation-common-schema.json#/definitions/VocabTerm"
+						},
+						{
+							"$ref": "./observation-common-schema.json#/definitions/Count"
+						},
+						{
+							"$ref": "./observation-common-schema.json#/definitions/Timeseries"
+						},
+						{
+							"$ref": "./observation-common-schema.json#/definitions/Complex"
+						}
+					]
+				}
+			},
+			"required": [
+				"Id",
+				"Type",
+				"ResultTime",
+				"PhenomenonTime",
+				"ValidTime",
+				"Foi",
+				"Result"
+			]
+		},
+		"relation": {
+			"type": "object",
+			"properties": {
+				"Observation": {
+					"type": "string"
+				},
+				"Role": {
+					"type": "string"
+				},
+				"RelatedObservation": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"Observation",
+				"Role",
+				"RelatedObservation"
+			]
+		},
+		"delete": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		}
+	},
+	"properties": {
+		"Observations": {
+			"type": "array",
+			"items": {
+				"$ref": "#/definitions/observation"
+			}
+		},
+		"Relations": {
+			"type": "array",
+			"items": {
+				"$ref": "#/definitions/relation"
+			}
+		}
+	},
+	"required": [
+		"Observations"
+	]
+}
+

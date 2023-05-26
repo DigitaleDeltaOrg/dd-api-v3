@@ -1,0 +1,394 @@
+﻿{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"type": "object",
+	"definitions": {
+		"TVPairMeasure": {
+			"type": "object",
+			"description": "A time-value pair with a measure value.",
+			"properties": {
+				"time": {
+					"type": "object",
+					"$ref": "#/definitions/temporalPrimitive"
+				},
+				"value": {
+					"type": "number"
+				},
+				"metadata": {
+					"type": "object",
+					"$ref": "#/definitions/PointMetadata"
+				}
+			},
+			"allowAdditionalProperties": false
+		},
+		"TVPairCategory": {
+			"type": "object",
+			"description": "A time-value pair with a category result.",
+			"properties": {
+				"time": {
+					"type": "object",
+					"$ref": "#/definitions/temporalPrimitive"
+				},
+				"value": {
+					"type": "object",
+					"$ref": "#/definitions/VocabTerm"
+				}
+			},
+			"allowAdditionalProperties": "false"
+		},
+		"TimeseriesType": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"title": "id",
+					"description": "Identifier for the time-series",
+					"type": "string"
+				},
+				"type": {
+					"title": "type",
+					"description": "Identifies the type of time-series",
+					"type": "string"
+				},
+				"metadata": {
+					"title": "metadata",
+					"description": "Metadata about the timeseries.",
+					"$ref": "#/definitions/TimeseriesMetadata"
+				},
+				"defaultPointMetadata": {
+					"title": "defaultPointMetadata",
+					"description": "Default metadata for each point in the timeseries (can be overridden on a per-point basis).",
+					"$ref": "#/definitions/PointMetadata"
+				},
+				"points": {
+					"title": "points",
+					"description": "The data points (time, value pairs) for the timeseries.",
+					"type": "array",
+					"items": {
+						"oneOf": [
+							{
+								"$ref": "#/definitions/TVPairMeasure"
+							},
+							{
+								"$ref": "#/definitions/TVPairCategory"
+							}
+						]
+					}
+				}
+			}
+		},
+		"TimeseriesMetadata": {
+			"description": "Metadata for the whole timeseries",
+			"type": "object",
+			"properties": {
+				"temporalExtent": {
+					"title": "temporalExtent",
+					"type": "object",
+					"$ref": "#/definitions/dateTimeInterval"
+				},
+				"baseTime": {
+					"title": "baseTime",
+					"type": "object",
+					"$ref": "#/definitions/dateTimeInstant"
+				},
+				"spacing": {
+					"title": "spacing",
+					"type": "object",
+					"$ref": "#/definitions/duration"
+				},
+				"commentBlock": {
+					"title": "commentBlock",
+					"type": "object",
+					"properties": {
+						"applicablePeriod": {
+							"type": "object",
+							"$ref": "#/definitions/dateTimeInterval"
+						},
+						"comment": {
+							"type": "string"
+						}
+					}
+				},
+				"commentBlocks": {
+					"title": "commentBlocks",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/commentBlock"
+					}
+				},
+				"intendedObservationSpacing": {
+					"title": "intendedObservationSpacing",
+					"description": "The intended temporal spacing of the time series points. This may vary from the actual spacing.",
+					"type": "object",
+					"$ref": "#/definitions/duration"
+				},
+				"status": {
+					"title": "status",
+					"description": "Indicates the statues of the observation. E.g. unreleased, verified etc.",
+					"type": "object",
+					"$ref": "#/definitions/link"
+				},
+				"cumulative": {
+					"title": "cumulative",
+					"description": "This boolean property indicates whether the series is  sequentially increasing and accumulates over time; i.e. each value is added to the last so the value represents the total of a value since accumulation began.",
+					"type": "boolean"
+				},
+				"accumulationAnchorTime": {
+					"title": "accumulationAnchorTime",
+					"description": "Defines the time at which accumulation begins. e.g. 9am.",
+					"$ref": "#/definitions/dateTimeInstant"
+				},
+				"startAnchorPoint": {
+					"title": "startAnchorPoint",
+					"description": "Specifies a ‘ghost’ point to allow the first value of the timeseries to be interpolated correctly.",
+					"$ref": "#/definitions/dateTimeInstant"
+				},
+				"endAnchorPoint": {
+					"title": "endAnchorPoint",
+					"description": "Specifies a ‘ghost’ point to allow the last value of the timeseries to be interpolated correctly.",
+					"$ref": "#/definitions/dateTimeInstant"
+				},
+				"maxGapPeriod": {
+					"title": "maxGapPeriod",
+					"description": "When any analysis is run over a timeseries it is important to know if it is possible to interpolate between any two adjoining points. If the join period between two adjoining points is greater than the maxGapPeriod then the series should not be interpolated between these adjoining points.",
+					"$ref": "#/definitions/duration"
+				}
+			},
+			"allowAdditionalProperties": false
+		},
+		"PointMetadata": {
+			"description": "Metadata for points in timeseries",
+			"type": "object",
+			"properties": {
+				"quality": {
+					"title": "quality",
+					"type": "object",
+					"$ref": "#/definitions/link"
+				},
+				"uom": {
+					"title": "uom",
+					"type": "object",
+					"$ref": "#/definitions/link"
+				},
+				"interpolationType": {
+					"title": "interpolationType",
+					"type": "object",
+					"$ref": "#/definitions/link"
+				},
+				"nilReason": {
+					"title": "nilReason",
+					"type": "object",
+					"$ref": "#/definitions/link"
+				},
+				"censoredReason": {
+					"title": "censoredReason",
+					"type": "object",
+					"$ref": "#/definitions/link"
+				},
+				"comment": {
+					"title": "comment",
+					"type": "string"
+				},
+				"accuracy": {
+					"title": "accuracy",
+					"$ref": "#/definitions/Measure"
+				},
+				"relatedObservation": {
+					"title": "relatedObservation",
+					"$ref": "#/definitions/link"
+				},
+				"aggregationDuration": {
+					"title": "aggregationDuration",
+					"$ref": "#/definitions/duration"
+				},
+				"qualifier": {
+					"title": "qualifier",
+					"$ref": "#/definitions/link"
+				},
+				"processing": {
+					"title": "processing",
+					"$ref": "#/definitions/link"
+				},
+				"source": {
+					"title": "source",
+					"$ref": "#/definitions/link"
+				}
+			},
+			"allowAdditionalProperties": false
+		},
+		"link": {
+			"title": "link",
+			"type": "object",
+			"properties": {
+				"href": {
+					"type": "string",
+					"format": "uri"
+				},
+				"rel": {
+					"type": "string",
+					"format": "uri"
+				},
+				"title": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"href"
+			],
+			"additionalProperties": false
+		},
+		"g-year-month": {
+			"title": "g-year-month",
+			"type": "string",
+			"pattern": "^([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])(Z|([+\\-])((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?$"
+		},
+		"g-year": {
+			"title": "g-year",
+			"type": "string",
+			"pattern": "^([1-9][0-9]{3,}|0[0-9]{3})(Z|([+\\-])((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?$"
+		},
+		"dateTimePosition": {
+			"title": "dateTime",
+			"oneOf": [
+				{
+					"type": "string",
+					"format": "date-time"
+				},
+				{
+					"$ref": "#/definitions/g-year-month"
+				},
+				{
+					"$ref": "#/definitions/g-year"
+				}
+			]
+		},
+		"dateTimeInstant": {
+			"title": "dateTimeInstant",
+			"type": "object",
+			"properties": {
+				"instant": {
+					"$ref": "#/definitions/dateTimePosition"
+				}
+			},
+			"required": [
+				"instant"
+			],
+			"additionalProperties": false
+		},
+		"dateTimeInterval": {
+			"title": "dateTimeInterval",
+			"description": "A time period has a begin and end. Either may be omitted for a single-ended interval.",
+			"type": "object",
+			"properties": {
+				"begin": {
+					"$ref": "#/definitions/dateTimePosition"
+				},
+				"end": {
+					"$ref": "#/definitions/dateTimePosition"
+				}
+			},
+			"additionalProperties": false
+		},
+		"temporalPrimitive": {
+			"title": "temporalPrimitive",
+			"oneOf": [
+				{
+					"$ref": "#/definitions/dateTimeInstant"
+				},
+				{
+					"$ref": "#/definitions/dateTimeInterval"
+				}
+			]
+		},
+		"duration": {
+			"title": "duration",
+			"type": "string",
+			"pattern": "-?P[0-9]+Y?([0-9]+M)?([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+(\\.[0-9]+)?S)?)?"
+		},
+		"temporalObject": {
+			"title": "temporalObject",
+			"oneOf": [
+				{
+					"$ref": "#/definitions/duration"
+				},
+				{
+					"$ref": "#/definitions/dateTimeInstant"
+				},
+				{
+					"$ref": "#/definitions/dateTimeInterval"
+				}
+			]
+		},
+		"commentBlock": {
+			"title": "commentBlock",
+			"type": "object",
+			"properties": {
+				"applicablePeriod": {
+					"type": "object",
+					"$ref": "#/definitions/dateTimeInterval"
+				},
+				"comment": {
+					"type": "string"
+				}
+			}
+		},
+		"Geometry": {
+			"type": "object",
+			"required": [
+				"type",
+				"coordinates"
+			],
+			"oneOf": [
+				{
+					"#ref": "https://geojson.org/schema/Point.json"
+				},
+				{
+					"#ref": "https://geojson.org/schema/Polygon.json"
+				}
+			]
+		},
+		"Complex": {
+			"type": "object",
+			"additionalProperties": true
+		},
+		"ParameterReference": {
+			"type": "object"
+		},
+		"Measure": {
+			"type": "object",
+			"properties": {
+				"Uom": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "number"
+				}
+			},
+			"required": [
+				"Uom",
+				"Value"
+			]
+		},
+		"Truth": {
+			"type": "boolean"
+		},
+		"Count": {
+			"type": "integer"
+		},
+		"Timeseries": {
+			"type": "object"
+		},
+		"VocabTerm": {
+			"type": "object",
+			"properties": {
+				"term": {
+					"type": "string"
+				},
+				"vocabulary": {
+					"type": "string",
+					"format": "uri"
+				}
+			}
+		}
+	}
+}
+
+
