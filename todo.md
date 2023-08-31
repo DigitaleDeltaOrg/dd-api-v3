@@ -23,6 +23,7 @@ Each reference has a type (which is also a reference).
 
 The types of reference are described in the official property-list.
 If the property-list has source columns, the source columns point to a URL containing valid values for it.
+If the Standard-column in the property-list for the property is set to 'Standard', then the value **must** conform to one of the sources as specified.
 
 ## Observation
 
