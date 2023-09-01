@@ -18,7 +18,7 @@ AquaDesk;No;Analist;Analyst;;ParameterContainer;;;;;;;
 AquaDesk;No;Controleur;Checker;;ParameterContainer;;;;;;;
 AquaDesk;No;Meetsetnummer;MeasurementSetNumber;;MetadataContainer;;;;;;;
 AquaDesk;No;CollectieReferentie;CollectionReference;;MetadataContainer;;;;;;;
-AQUO;Yes;Limietsymbool;LimitSymbol;;ParameterContainer;;;'Values: <, <=, =, =>, >';;;;
+AQUO;Yes;Limietsymbool;LimitSymbol;;ParameterContainer;;;"Values: <, <=, =, =>, >";;;;
 AquaDesk;No;Purpose;Purpose;;ParameterContainer;;;https://live.aquadesk.nl/purposes;;;;
 AQUO;Yes;Ecotope;Ecotope;;ParameterContainer;;;https://live.aquadesk.nl/ecotopes;;;;
 OMS;Yes;Observatie type;ObservationType;;ParameterContainer;;;;;;;
