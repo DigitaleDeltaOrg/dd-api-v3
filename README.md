@@ -115,7 +115,7 @@ Kennisplatform API allows only authentication using OAUTH2, with two specific fl
 - Authorisation code flow (user authorisation)
 - Client credentials flow (machine-to-machine)
 
-In addition, OpenID Connect is allowed to facilitate user authorisation.
+In addition, OpenID Connect is allowed to facilitate user authorization.
 API keys are not allowed for authorization purposes.
 
 ## GeoJSON
