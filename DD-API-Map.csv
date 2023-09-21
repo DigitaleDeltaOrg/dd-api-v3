@@ -35,7 +35,7 @@ ParameterContainer;;Notitie;Note;AquaDesk;No;;
 ParameterContainer;;Parameter;Parameter;AquaDesk;No;;
 ParameterContainer;;ParameterType;ParameterType;AquaDesk;No;;
 ParameterContainer;;Project;Project;AquaDesk;No;;
-ParameterContainer;;Purpose;Purpose;AQUO/KNMI/TaxaInfo;Yes;https://www.aquo.nl/index.php/Id-0eafa483-2875-4c94-890d-66258a6b4d88, https://taxainfo.nl;Aquo: Excluding group 'Grootheid'
+ParameterContainer;;Purpose;Purpose;AQUO/KNMI/TaxaInfo;Yes;https://www.aquo.nl/index.php/Id-0eafa483-2875-4c94-890d-66258a6b4d88 + https://taxainfo.nl;Aquo: Excluding group 'Grootheid'
 ParameterContainer;;Relatie;Relation;AquaDesk;No;;
 ParameterContainer;;Sediment;Sediment;AquaDesk;No;https://www.aquo.nl/index.php/Id-04f4f467-021b-4218-baa8-9742ed977c61;
 ParameterContainer;;SensorThing;SensorThing;AquaDesk;No;https://live.aquadesk.nl/purposes;
@@ -49,4 +49,4 @@ ParameterContainer;;Waardebewerkingsmethode;ValueProcessingMethod;AQUO;Yes;https
 ParameterContainer;;Waterbeheerder/Meetinstantie;Organisation;AQUO;Yes;https://www.aquo.nl/index.php/Id-2fe1c443-26dc-4e64-b662-aa8662642715;
 MetadataContainer;;CollectieReferentie;CollectionReference;AQUO;Yes;https://www.aquo.nl/index.php/Id-04be2365-3d05-4903-a53e-edafef7111e8;
 MetadataContainer;;Meetsetnummer;MeasurementSetNumber;AQUO;Yes;https://www.aquo.nl/index.php/Id-a2310c26-065f-4aec-9440-74892ec77753;
-MetadataContainer;;Monsteropmerking;SampleComment;AQUO;Yes;https://www.aquo.nl/index.php/Id-52637750-d341-4a38-b80e-18e3442882a3, https://www.aquo.nl/index.php/Id-4e270f0a-cefe-446e-9d4d-6666c91180a8;
+MetadataContainer;;Monsteropmerking;SampleComment;AQUO;Yes;https://www.aquo.nl/index.php/Id-52637750-d341-4a38-b80e-18e3442882a3 + https://www.aquo.nl/index.php/Id-4e270f0a-cefe-446e-9d4d-6666c91180a8;
