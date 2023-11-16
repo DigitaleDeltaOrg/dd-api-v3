@@ -23,7 +23,7 @@
 					"type": "string",
 					"format": "date-time"
 				},
-				"Parameter": {
+				"ObservedProperty": {
 					"type": "object",
 					"additionalProperties": {
 						"$ref": "./observation-common-schema.json#/definitions/ParameterReference"
