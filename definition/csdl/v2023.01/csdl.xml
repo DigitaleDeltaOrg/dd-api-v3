@@ -10,7 +10,7 @@
                 <Property Name="Type" Type="Edm.String"/>
                 <Property Name="Organisation" Type="Edm.String"/>
                 <Property Name="Code" Type="Edm.String"/>
-                <Property Name="Geometry" Type="Edm.GeometryPoint"/>
+                <Property Name="Geography" Type="Edm.GeographyPoint"/>
                 <Property Name="Description" Type="Edm.String"/>
                 <!-- Required end -->
                 <!-- Optional start -->
@@ -56,7 +56,7 @@
                 <Property Name="Count" Type="Edm.Int64"/>
                 <Property Name="Measure" Type="DigitaleDelta.Measure"/>
                 <Property Name="Vocab" Type="DigitaleDelta.CategoryVerb"/>
-                <Property Name="Geometry" Type="Edm.GeometryPoint"/>
+                <Property Name="Geography" Type="Edm.GeographyPoint"/>
                 <NavigationProperty Name="Timeseries" Type="DigitaleDelta.TimeseriesResult"/>
             </EntityType>
             <ComplexType Name="Measure">
