@@ -179,8 +179,8 @@
                                     "Organisation desc",
                                     "Code",
                                     "Code desc",
-                                    "Geometry",
-                                    "Geometry desc",
+                                    "Geography",
+                                    "Geography desc",
                                     "Description",
                                     "Description desc",
                                     "ExternalKey",
@@ -220,7 +220,7 @@
                                     "Type",
                                     "Organisation",
                                     "Code",
-                                    "Geometry",
+                                    "Geography",
                                     "Description",
                                     "ExternalKey",
                                     "TaxonRank",
@@ -325,8 +325,8 @@
                     "Code": {
                         "type": "string"
                     },
-                    "Geometry": {
-                        "$ref": "#/components/schemas/Edm.GeometryPoint"
+                    "Geography": {
+                        "$ref": "#/components/schemas/Edm.GeographyPoint"
                     },
                     "Description": {
                         "type": "string",
@@ -594,8 +594,8 @@
                         "type": "string",
                         "nullable": true
                     },
-                    "Geometry": {
-                        "$ref": "#/components/schemas/Edm.GeometryPoint"
+                    "Geography": {
+                        "$ref": "#/components/schemas/Edm.GeographyPoint"
                     }
                 }
             },
@@ -637,8 +637,8 @@
                             }
                         ]
                     },
-                    "Geometry": {
-                        "$ref": "#/components/schemas/Edm.GeometryPoint"
+                    "Geography": {
+                        "$ref": "#/components/schemas/Edm.GeographyPoint"
                     },
                     "Timeseries": {
                         "anyOf": [
@@ -1018,56 +1018,56 @@
                 ]
             },
             "Edm.Geography": {
-                "$ref": "#/components/schemas/Edm.Geometry"
+                "$ref": "#/components/schemas/Edm.Geography"
             },
             "Edm.GeographyPoint": {
-                "$ref": "#/components/schemas/Edm.GeometryPoint"
+                "$ref": "#/components/schemas/Edm.GeographyPoint"
             },
             "Edm.GeographyLineString": {
-                "$ref": "#/components/schemas/Edm.GeometryLineString"
+                "$ref": "#/components/schemas/Edm.GeographyLineString"
             },
             "Edm.GeographyPolygon": {
-                "$ref": "#/components/schemas/Edm.GeometryPolygon"
+                "$ref": "#/components/schemas/Edm.GeographyPolygon"
             },
             "Edm.GeographyMultiPoint": {
-                "$ref": "#/components/schemas/Edm.GeometryMultiPoint"
+                "$ref": "#/components/schemas/Edm.GeographyMultiPoint"
             },
             "Edm.GeographyMultiLineString": {
-                "$ref": "#/components/schemas/Edm.GeometryMultiLineString"
+                "$ref": "#/components/schemas/Edm.GeographyMultiLineString"
             },
             "Edm.GeographyMultiPolygon": {
-                "$ref": "#/components/schemas/Edm.GeometryMultiPolygon"
+                "$ref": "#/components/schemas/Edm.GeographyMultiPolygon"
             },
             "Edm.GeographyCollection": {
-                "$ref": "#/components/schemas/Edm.GeometryCollection"
+                "$ref": "#/components/schemas/Edm.GeographyCollection"
             },
-            "Edm.Geometry": {
+            "Edm.Geography": {
                 "type": "object",
                 "oneOf": [
                     {
-                        "$ref": "#/components/schemas/Edm.GeometryPoint"
+                        "$ref": "#/components/schemas/Edm.GeographyPoint"
                     },
                     {
-                        "$ref": "#/components/schemas/Edm.GeometryLineString"
+                        "$ref": "#/components/schemas/Edm.GeographyLineString"
                     },
                     {
-                        "$ref": "#/components/schemas/Edm.GeometryPolygon"
+                        "$ref": "#/components/schemas/Edm.GeographyPolygon"
                     },
                     {
-                        "$ref": "#/components/schemas/Edm.GeometryMultiPoint"
+                        "$ref": "#/components/schemas/Edm.GeographyMultiPoint"
                     },
                     {
-                        "$ref": "#/components/schemas/Edm.GeometryMultiLineString"
+                        "$ref": "#/components/schemas/Edm.GeographyMultiLineString"
                     },
                     {
-                        "$ref": "#/components/schemas/Edm.GeometryMultiPolygon"
+                        "$ref": "#/components/schemas/Edm.GeographyMultiPolygon"
                     },
                     {
-                        "$ref": "#/components/schemas/Edm.GeometryCollection"
+                        "$ref": "#/components/schemas/Edm.GeographyCollection"
                     }
                 ]
             },
-            "Edm.GeometryPoint": {
+            "Edm.GeographyPoint": {
                 "required": [
                     "type",
                     "coordinates"
@@ -1086,7 +1086,7 @@
                     }
                 }
             },
-            "Edm.GeometryLineString": {
+            "Edm.GeographyLineString": {
                 "required": [
                     "type",
                     "coordinates"
@@ -1107,7 +1107,7 @@
                     }
                 }
             },
-            "Edm.GeometryPolygon": {
+            "Edm.GeographyPolygon": {
                 "required": [
                     "type",
                     "coordinates"
@@ -1131,7 +1131,7 @@
                     }
                 }
             },
-            "Edm.GeometryMultiPoint": {
+            "Edm.GeographyMultiPoint": {
                 "required": [
                     "type",
                     "coordinates"
@@ -1151,7 +1151,7 @@
                     }
                 }
             },
-            "Edm.GeometryMultiLineString": {
+            "Edm.GeographyMultiLineString": {
                 "required": [
                     "type",
                     "coordinates"
@@ -1175,7 +1175,7 @@
                     }
                 }
             },
-            "Edm.GeometryMultiPolygon": {
+            "Edm.GeographyMultiPolygon": {
                 "required": [
                     "type",
                     "coordinates"
@@ -1202,7 +1202,7 @@
                     }
                 }
             },
-            "Edm.GeometryCollection": {
+            "Edm.GeographyCollection": {
                 "required": [
                     "type",
                     "coordinates"
@@ -1211,13 +1211,13 @@
                 "properties": {
                     "type": {
                         "enum": [
-                            "GeometryCollection"
+                            "GeographyCollection"
                         ]
                     },
                     "coordinates": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/components/schemas/Edm.Geometry"
+                            "$ref": "#/components/schemas/Edm.Geography"
                         }
                     }
                 }
@@ -1543,7 +1543,7 @@
                     "Code": "String",
                     "Description": "String",
                     "ExternalKey": "String",
-                    "Geometry": "GeometryPoint",
+                    "Geography": "GeographyPoint",
                     "Id": "String (identifier)",
                     "Organisation": "String",
                     "ParameterType": "String",
@@ -1609,7 +1609,7 @@
                     "CasNumber": "String",
                     "Code": "String",
                     "Description": "String",
-                    "Geometry": "GeometryPoint",
+                    "Geography": "GeographyPoint",
                     "Id": "String (identifier)",
                     "Organisation": "String",
                     "ParameterType": "String",
@@ -1630,7 +1630,7 @@
             "DigitaleDelta.Result": {
                 "value": {
                     "Count": 0,
-                    "Geometry": "GeometryPoint",
+                    "Geography": "GeographyPoint",
                     "Id": "String (identifier)",
                     "Measure": {
                         "@odata.type": "DigitaleDelta.Measure"
