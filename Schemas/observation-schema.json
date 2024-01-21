@@ -57,6 +57,9 @@
 						},
 						{
 							"$ref": "./observation-common-schema.json#/definitions/Complex"
+						},
+						{
+							"$ref": "./observation-common-schema.json#/definitions/Geography"
 						}
 					]
 				},
