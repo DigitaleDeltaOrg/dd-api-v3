@@ -1,7 +1,7 @@
 ﻿{
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"definitions": {
-		"Geometry": {
+		"Geography": {
 			"type": "object",
 			"required": [
 				"type",
@@ -42,8 +42,8 @@
 			"type": "string",
 			"format": "date-time"
 		},
-		"Geometry": {
-			"#ref": "#/definitions/Geometry"
+		"Geography": {
+			"#ref": "#/definitions/Geography"
 		}
 	},
 	"allowAdditionalProperties": true,
