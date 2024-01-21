@@ -151,7 +151,7 @@ The management and subscription endpoints are not yet implemented in the Proof o
 ## History
 
 - 20230226: Move ObservedProperty, observingProcedure, observer and host are moved to 'Parameter', 
-  to simplify filtering. Foi stays a separate entity, since it involves geometry *and* it is required.
+  to simplify filtering. Foi stays a separate entity, since it involves geography *and* it is required.
   'Parameter' is used to keep the search interface clean. OMS allows this as Parameter is defined as a multi-name/value property.
 - 20230227: Add 'ParameterDetails' to expand the details of the parameter.
 - 20230228: Add 'Metadata' to add additional information that is not referable.
