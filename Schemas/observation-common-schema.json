@@ -330,7 +330,7 @@
 				}
 			}
 		},
-		"Geometry": {
+		"Geography": {
 			"type": "object",
 			"required": [
 				"type",
