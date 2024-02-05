@@ -1017,30 +1017,30 @@
                     }
                 ]
             },
-            "Edm.Geography": {
-                "$ref": "#/components/schemas/Edm.Geography"
-            },
-            "Edm.GeographyPoint": {
-                "$ref": "#/components/schemas/Edm.GeographyPoint"
-            },
-            "Edm.GeographyLineString": {
-                "$ref": "#/components/schemas/Edm.GeographyLineString"
-            },
-            "Edm.GeographyPolygon": {
-                "$ref": "#/components/schemas/Edm.GeographyPolygon"
-            },
-            "Edm.GeographyMultiPoint": {
-                "$ref": "#/components/schemas/Edm.GeographyMultiPoint"
-            },
-            "Edm.GeographyMultiLineString": {
-                "$ref": "#/components/schemas/Edm.GeographyMultiLineString"
-            },
-            "Edm.GeographyMultiPolygon": {
-                "$ref": "#/components/schemas/Edm.GeographyMultiPolygon"
-            },
-            "Edm.GeographyCollection": {
-                "$ref": "#/components/schemas/Edm.GeographyCollection"
-            },
+            #"Edm.Geography": {
+            #    "$ref": "#/components/schemas/Edm.Geography"
+            #},
+            #"Edm.GeographyPoint": {
+            #    "$ref": "#/components/schemas/Edm.GeographyPoint"
+            #},
+            #"Edm.GeographyLineString": {
+            #    "$ref": "#/components/schemas/Edm.GeographyLineString"
+            #},
+            #"Edm.GeographyPolygon": {
+            #    "$ref": "#/components/schemas/Edm.GeographyPolygon"
+            #},
+            #"Edm.GeographyMultiPoint": {
+            #    "$ref": "#/components/schemas/Edm.GeographyMultiPoint"
+            #},
+            #"Edm.GeographyMultiLineString": {
+            #    "$ref": "#/components/schemas/Edm.GeographyMultiLineString"
+            #},
+            #"Edm.GeographyMultiPolygon": {
+            #    "$ref": "#/components/schemas/Edm.GeographyMultiPolygon"
+            #},
+            #"Edm.GeographyCollection": {
+            #    "$ref": "#/components/schemas/Edm.GeographyCollection"
+            #},
             "Edm.Geography": {
                 "type": "object",
                 "oneOf": [
