@@ -134,12 +134,19 @@ The API is **required** to support **at least** the following CRS **by their urn
 - RD (urn:ogc:def:crs:EPSG::28992)
 - Web Mercator (urn:ogc:def:crs:EPSG::3857)
 
+## Rate limiting
+
+Rate limiting implementation is optional. When implemnted, however, [https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-ratelimit-headers](the proposed IETF standard) must be implemented.
+
 ## Proof of Concept
 
 In the /Source/DotNet part of this GitHub repository, a simple implementation of a proof of concept is available in .NET 7/C# 11.
 It implements a simple yet functional and fast storage model using PostgreSQL 15. The implementor can, of course, implement their own storage model or extend their own platform to provide the functionality.
-
 The management and subscription endpoints are not yet implemented in the Proof of Concept. That part is Work in Progress.
+
+## User Interface
+
+A sample user interface that allows to compose DD-API V3 queries is available: [https://ddapi-ui.ecosys.nl](https://ddapi-ui.ecosys.nl). That ptoject will soon become an open source project.
 
 ## TODO
 
