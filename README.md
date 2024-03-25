@@ -167,4 +167,7 @@ A sample user interface that allows to compose DD-API V3 queries is available: [
 - 20230315: Revisit the UML. Base for SensorThings API and data management (including Thing and Actuator).
 - 20230427: Improved documentation
 - 20230510: Clarify OData => Kennisplatform API's rules
+- 20240324: Added section on rate limiting
+- 20240325: Added section on user interface
+
 
