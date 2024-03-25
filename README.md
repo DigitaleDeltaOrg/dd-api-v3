@@ -146,7 +146,7 @@ The management and subscription endpoints are not yet implemented in the Proof o
 
 ## User Interface
 
-A sample user interface that allows to compose DD-API V3 queries is available: [https://ddapi-ui.ecosys.nl](https://ddapi-ui.ecosys.nl). That ptoject will soon become an open source project.
+A sample user interface that allows to compose DD-API V3 queries is available: [https://ddapi-ui.ecosys.nl](https://ddapi-ui.ecosys.nl). The open source of that implementation is available at [https://github.com/DigitaleDeltaOrg/DD-API-V3-UI](https://github.com/DigitaleDeltaOrg/DD-API-V3-UI).
 
 ## TODO
 
