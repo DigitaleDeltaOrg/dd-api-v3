@@ -148,6 +148,12 @@ The management and subscription endpoints are not yet implemented in the Proof o
 
 A sample user interface that allows to compose DD-API V3 queries is available: [https://ddapi-ui.ecosys.nl](https://ddapi-ui.ecosys.nl). The open source of that implementation is available at [https://github.com/DigitaleDeltaOrg/DD-API-V3-UI](https://github.com/DigitaleDeltaOrg/DD-API-V3-UI).
 
+## Current implementations
+| Name | Implementation by | Description | URL | Status |
+| ---- | ---- | ----------- | ----- | --- | 
+| AquaDesk | [https://ecosys.nl](https://ecosys.nl) | Contains ecological, chemical and physical measurements as observations | [https://ddapi.aquadesk.nl/v3](https://ddapi.aquadesk.nl/v3] | Production |
+| AQUON-sensor | [https://aquon.nl](https://aquon.nl) | Contains sensor data of several waterboards | ... | In development |
+
 ## TODO
 
 - As long as there is no official TimeseriesML JSON encoding, define our own encoding, based on
@@ -169,5 +175,6 @@ A sample user interface that allows to compose DD-API V3 queries is available: [
 - 20230510: Clarify OData => Kennisplatform API's rules
 - 20240324: Added section on rate limiting
 - 20240325: Added section on user interface
+- 20230325: Added section for current implementations
 
 
