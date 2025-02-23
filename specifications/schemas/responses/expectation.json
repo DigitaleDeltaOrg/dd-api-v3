@@ -1,0 +1,71 @@
+﻿{
+  "type": "Coverage",
+  "domain": {
+    "type": "Domain",
+    "axes": {
+      "t": {
+        "values": [
+          "2024-03-20T00:00:00Z",
+          "2024-03-20T06:00:00Z",
+          "2024-03-20T12:00:00Z",
+          "2024-03-20T18:00:00Z",
+          "2024-03-21T00:00:00Z"
+        ]
+      }
+    },
+    "referencing": [{
+      "coordinates": ["t"],
+      "system": {
+        "type": "TemporalRS",
+        "calendar": "Gregorian"
+      }
+    }]
+  },
+  "parameters": {
+    "waterLevel": {
+      "type": "Parameter",
+      "description": "Voorspelde waterstand",
+      "unit": {
+        "label": "m",
+        "symbol": {
+          "value": "m",
+          "type": "https://www.opengis.net/def/uom/UCUM/"
+        }
+      },
+      "observedProperty": {
+        "id": "https://vocab.example.org/quantities/waterlevel",
+        "label": "Water Level"
+      }
+    },
+    "quality": {
+      "type": "Parameter",
+      "description": "Kwaliteitsindicator van de voorspelling",
+      "categories": [{
+        "id": "good",
+        "label": "Goed"
+      }, {
+        "id": "moderate",
+        "label": "Matig"
+      }, {
+        "id": "poor",
+        "label": "Slecht"
+      }]
+    }
+  },
+  "ranges": {
+    "waterLevel": {
+      "type": "NdArray",
+      "dataType": "float",
+      "axisNames": ["t"],
+      "shape": [5],
+      "values": [2.45, 2.56, 2.67, 2.72, 2.65]
+    },
+    "quality": {
+      "type": "NdArray",
+      "dataType": "string",
+      "axisNames": ["t"],
+      "shape": [5],
+      "values": ["good", "good", "moderate", "moderate", "poor"]
+    }
+  }
+}

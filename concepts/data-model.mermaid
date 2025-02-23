@@ -1,0 +1,24 @@
+graph TB
+subgraph "Digitale Delta API V3"
+R[Referenties] --> |"definieert"| RD[Definities/Vocabulaire]
+RD --> |"bevat"| U[Units/Eenheden]
+RD --> |"bevat"| P[Parameters]
+RD --> |"bevat"| M[MeasurementObjects]
+
+O[Observaties] --> |"gebruikt"| RD
+O --> |"heeft"| RT[ResultTime]
+O --> |"heeft"| PT[PhenomenonTime]
+O --> |"heeft"| RES[Result]
+O --> |"heeft"| FOI[Feature of Interest]
+
+RES --> |"type"| MT[Measure]
+RES --> |"type"| CT[Count]
+RES --> |"type"| VT[Vocab]
+RES --> |"type"| TT[Truth]
+RES --> |"type"| COV[Coverage]
+
+FOI --> |"verwijst naar"| M
+end
+
+style R fill:#f9f,stroke:#333,stroke-width:2px
+style O fill:#bbf,stroke:#333,stroke-width:2px

@@ -1,0 +1,73 @@
+﻿{
+  "result": {
+    "type": "Coverage",
+    "domain": {
+      "type": "Domain",
+      "axes": {
+        "t": {
+          "values": [
+            "2024-03-19T12:00:00Z",
+            "2024-03-19T18:00:00Z"
+          ]
+        },
+        "member": {
+          "values": [
+            "control",
+            "member001",
+            "member002"
+          ]
+        }
+      },
+      "referencing": [
+        {
+          "coordinates": [
+            "t"
+          ],
+          "system": {
+            "type": "TemporalRS",
+            "calendar": "Gregorian"
+          }
+        }
+      ]
+    },
+    "parameters": {
+      "waterLevel": {
+        "type": "Parameter",
+        "description": "Water level forecast",
+        "unit": {
+          "label": "m",
+          "symbol": {
+            "value": "m",
+            "type": "https://www.opengis.net/def/uom/UCUM/"
+          }
+        },
+        "observedProperty": {
+          "id": "https://vocab.example.org/quantities/waterlevel",
+          "label": "Water Level"
+        }
+      }
+    },
+    "ranges": {
+      "waterLevel": {
+        "type": "NdArray",
+        "dataType": "float",
+        "axisNames": [
+          "t",
+          "member"
+        ],
+        "shape": [
+          2,
+          3
+        ],
+        "values": [
+          2250.0,
+          2245.5,
+          2253.2,
+          2300.0,
+          2292.3,
+          2305.8
+        ]
+      }
+    }
+  }
+}

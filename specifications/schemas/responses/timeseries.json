@@ -1,0 +1,75 @@
+﻿{
+  "type": "Coverage",
+  "domain": {
+    "type": "Domain",
+    "axes": {
+      "t": {
+        "values": [
+          "2024-03-18T00:00:00Z",
+          "2024-03-18T01:00:00Z",
+          "2024-03-18T02:00:00Z",
+          "2024-03-18T03:00:00Z",
+          "2024-03-18T04:00:00Z"
+        ],
+        "bounds": {
+          "start": "2024-03-18T00:00:00Z",
+          "stop": "2024-03-18T04:00:00Z"
+        }
+      }
+    },
+    "referencing": [{
+      "coordinates": ["t"],
+      "system": {
+        "type": "TemporalRS",
+        "calendar": "Gregorian"
+      }
+    }]
+  },
+  "parameters": {
+    "waterLevel": {
+      "type": "Parameter",
+      "description": "Gemeten waterstand",
+      "unit": {
+        "label": "m",
+        "symbol": {
+          "value": "m",
+          "type": "https://www.opengis.net/def/uom/UCUM/"
+        }
+      },
+      "observedProperty": {
+        "id": "https://vocab.example.org/quantities/waterlevel",
+        "label": "Water Level"
+      }
+    },
+    "status": {
+      "type": "Parameter",
+      "description": "Status van de meting",
+      "categories": [{
+        "id": "validated",
+        "label": "Gevalideerd"
+      }, {
+        "id": "raw",
+        "label": "Ongevalideerd"
+      }, {
+        "id": "missing",
+        "label": "Ontbrekend"
+      }]
+    }
+  },
+  "ranges": {
+    "waterLevel": {
+      "type": "NdArray",
+      "dataType": "float",
+      "axisNames": ["t"],
+      "shape": [5],
+      "values": [2.31, 2.28, null, 2.35, 2.40]
+    },
+    "status": {
+      "type": "NdArray",
+      "dataType": "string",
+      "axisNames": ["t"],
+      "shape": [5],
+      "values": ["validated", "validated", "missing", "raw", "raw"]
+    }
+  }
+}

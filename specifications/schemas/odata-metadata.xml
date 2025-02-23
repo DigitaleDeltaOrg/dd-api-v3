@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DigitaleDeltaModels">
+            <EntityType Name="Reference">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.String" Nullable="false"/>
+                <Property Name="Type" Type="Edm.String"/>
+                <Property Name="Organisation" Type="Edm.String"/>
+                <Property Name="Code" Type="Edm.String" Nullable="false"/>
+                <Property Name="Geography" Type="Edm.Geometry"/>
+                <Property Name="Description" Type="Edm.String" Nullable="false"/>
+            </EntityType>
+
+            <EntityType Name="Observation">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.String" Nullable="false"/>
+                <Property Name="Type" Type="Edm.String" Nullable="false"/>
+                <Property Name="ResultTime" Type="Edm.DateTimeOffset" Nullable="false"/>
+                <Property Name="PhenomenonTime" Type="DigitaleDeltaModels.TmPeriod" Nullable="false"/>
+                <Property Name="ValidTime" Type="DigitaleDeltaModels.TmPeriod"/>
+                <Property Name="ResultOf" Type="Edm.String"/>
+                <Property Name="Parameter" Type="DigitaleDeltaModels.ParameterContainer" Nullable="false"/>
+                <Property Name="Metadata" Type="DigitaleDeltaModels.MetadataContainer"/>
+                <NavigationProperty Name="Foi" Type="DigitaleDeltaModels.Foi"/>
+                <NavigationProperty Name="Result" Type="DigitaleDeltaModels.Result"/>
+                <NavigationProperty Name="RelatedObservations" Type="Collection(DigitaleDeltaModels.RelatedObservation)"/>
+            </EntityType>
+
+            <ComplexType Name="TmPeriod">
+                <Property Name="BeginPosition" Type="Edm.DateTimeOffset"/>
+                <Property Name="EndPosition" Type="Edm.DateTimeOffset"/>
+            </ComplexType>
+
+            <EntityType Name="Foi">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.String" Nullable="false"/>
+                <Property Name="Code" Type="Edm.String" Nullable="false"/>
+                <Property Name="Description" Type="Edm.String" Nullable="false"/>
+                <Property Name="Geography" Type="Edm.Geometry"/>
+            </EntityType>
+
+            <ComplexType Name="ParameterContainer">
+                <Property Name="Parameter" Type="Edm.String"/>
+                <Property Name="Compartment" Type="Edm.String"/>
+                <Property Name="Quantity" Type="Edm.String"/>
+                <Property Name="Organisation" Type="Edm.String"/>
+                <Property Name="OrganisationNamespace" Type="Edm.String"/>
+            </ComplexType>
+
+            <ComplexType Name="MetadataContainer">
+            </ComplexType>
+
+            <EntityType Name="Result">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.String" Nullable="false"/>
+                <Property Name="Truth" Type="Edm.Boolean"/>
+                <Property Name="Count" Type="Edm.Int64"/>
+                <Property Name="Measure" Type="DigitaleDeltaModels.Measure"/>
+                <Property Name="Vocab" Type="DigitaleDeltaModels.CategoryVerb"/>
+                <Property Name="Coverage" Type="DigitaleDeltaModels.CoverageJSON.Coverage"/>
+            </EntityType>
+
+            <ComplexType Name="Measure">
+                <Property Name="Uom" Type="Edm.String" Nullable="false"/>
+                <Property Name="Value" Type="Edm.Decimal" Scale="variable"/>
+                <Property Name="Namespace" Type="Edm.String"/>
+            </ComplexType>
+
+            <ComplexType Name="CategoryVerb">
+                <Property Name="Vocabulary" Type="Edm.String" Nullable="false"/>
+                <Property Name="Term" Type="Edm.String" Nullable="false"/>
+            </ComplexType>
+
+            <EntityType Name="RelatedObservation">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.String" Nullable="false"/>
+                <Property Name="Role" Type="Edm.String" Nullable="false"/>
+            </EntityType>
+        </Schema>
+
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DigitaleDeltaModels.CoverageJSON">
+            <ComplexType Name="Coverage">
+                <Property Name="Type" Type="Edm.String" Nullable="false"/>
+                <Property Name="Domain" Type="DigitaleDeltaModels.CoverageJSON.Domain" Nullable="false"/>
+                <Property Name="Parameters" Type="Collection(DigitaleDeltaModels.CoverageJSON.Parameter)" Nullable="false"/>
+                <Property Name="Ranges" Type="Collection(DigitaleDeltaModels.CoverageJSON.Range)" Nullable="false"/>
+            </ComplexType>
+
+            <ComplexType Name="Domain">
+                <Property Name="Type" Type="Edm.String" Nullable="false"/>
+                <Property Name="Axes" Type="Collection(DigitaleDeltaModels.CoverageJSON.Axis)" Nullable="false"/>
+                <Property Name="Referencing" Type="Collection(DigitaleDeltaModels.Reference)"/>
+            </ComplexType>
+
+            <ComplexType Name="Axis">
+                <Property Name="Values" Type="Collection(Edm.String)" Nullable="false"/>
+                <Property Name="Start" Type="Edm.Double"/>
+                <Property Name="Stop" Type="Edm.Double"/>
+                <Property Name="Num" Type="Edm.Int32"/>
+            </ComplexType>
+
+            <ComplexType Name="Parameter">
+                <Property Name="Type" Type="Edm.String" Nullable="false"/>
+                <Property Name="ObservedProperty" Type="DigitaleDeltaModels.CoverageJSON.ObservedProperty"/>
+                <Property Name="Unit" Type="DigitaleDeltaModels.CoverageJSON.Unit"/>
+                <Property Name="CategoryEncoding" Type="Collection(DigitaleDeltaModels.CoverageJSON.CategoryEncoding)"/>
+            </ComplexType>
+
+            <ComplexType Name="ObservedProperty">
+                <Property Name="Id" Type="Edm.String"/>
+                <Property Name="Label" Type="Collection(DigitaleDeltaModels.CoverageJSON.LocalizedText)"/>
+                <Property Name="Description" Type="Collection(DigitaleDeltaModels.CoverageJSON.LocalizedText)"/>
+                <Property Name="Categories" Type="Collection(DigitaleDeltaModels.CoverageJSON.Category)"/>
+            </ComplexType>
+
+            <ComplexType Name="Category">
+                <Property Name="Id" Type="Edm.String" Nullable="false"/>
+                <Property Name="Label" Type="Collection(DigitaleDeltaModels.CoverageJSON.LocalizedText)"/>
+                <Property Name="Description" Type="Collection(DigitaleDeltaModels.CoverageJSON.LocalizedText)"/>
+            </ComplexType>
+
+            <ComplexType Name="Unit">
+                <Property Name="Id" Type="Edm.String"/>
+                <Property Name="Label" Type="Collection(DigitaleDeltaModels.CoverageJSON.LocalizedText)"/>
+                <Property Name="Symbol" Type="Collection(DigitaleDeltaModels.CoverageJSON.LocalizedText)"/>
+            </ComplexType>
+
+            <ComplexType Name="Range">
+                <Property Name="Type" Type="Edm.String" Nullable="false"/>
+                <Property Name="DataType" Type="Edm.String"/>
+                <Property Name="Values" Type="Collection(Edm.String)" Nullable="false"/>
+                <Property Name="AxisNames" Type="Collection(Edm.String)"/>
+                <Property Name="Shape" Type="Collection(Edm.Int32)"/>
+            </ComplexType>
+
+            <ComplexType Name="LocalizedText">
+                <Property Name="LanguageCode" Type="Edm.String"/>
+                <Property Name="Text" Type="Edm.String"/>
+            </ComplexType>
+
+            <ComplexType Name="CategoryEncoding">
+                <Property Name="Key" Type="Edm.String"/>
+                <Property Name="Values" Type="Collection(Edm.String)"/>
+            </ComplexType>
+        </Schema>
+
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="System.Collections.Generic">
+            <ComplexType Name="KeyValuePair_2OfString_Uri"/>
+            <ComplexType Name="KeyValuePair_2OfValueTuple_2OfString_String_List_1OfFeederEntityError">
+                <Property Name="Value" Type="Collection(DigitaleDeltaModels.Feeder.FeederEntityError)" Nullable="false"/>
+            </ComplexType>
+            <ComplexType Name="KeyValuePair_2OfString_List_1OfFeederResponseEntity">
+                <NavigationProperty Name="Value" Type="Collection(DigitaleDeltaModels.Feeder.Observation.FeederResponseEntity)"/>
+            </ComplexType>
+            <ComplexType Name="KeyValuePair_2OfString_List_1OfFeederEntityError">
+                <Property Name="Value" Type="Collection(DigitaleDeltaModels.Feeder.FeederEntityError)" Nullable="false"/>
+            </ComplexType>
+        </Schema>
+
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Default">
+            <Function Name="intersects" IsBound="true">
+                <Parameter Name="bindingParameter" Type="DigitaleDeltaModels.Reference"/>
+                <Parameter Name="wkt" Type="Edm.String"/>
+                <ReturnType Type="Edm.Boolean" Nullable="false"/>
+            </Function>
+            <Function Name="intersects" IsBound="true">
+                <Parameter Name="bindingParameter" Type="DigitaleDeltaModels.Observation"/>
+                <Parameter Name="wkt" Type="Edm.String"/>
+                <ReturnType Type="Edm.Boolean" Nullable="false"/>
+            </Function>
+            <Function Name="distance" IsBound="true">
+                <Parameter Name="bindingParameter" Type="DigitaleDeltaModels.Reference"/>
+                <Parameter Name="wkt" Type="Edm.String"/>
+                <ReturnType Type="Edm.Double" Nullable="false"/>
+            </Function>
+            <Function Name="distance" IsBound="true">
+                <Parameter Name="bindingParameter" Type="DigitaleDeltaModels.Observation"/>
+                <Parameter Name="wkt" Type="Edm.String"/>
+                <ReturnType Type="Edm.Double" Nullable="false"/>
+            </Function>
+
+            <EntityContainer Name="Container">
+                <EntitySet Name="references" EntityType="DigitaleDeltaModels.Reference">
+                    <NavigationPropertyBinding Path="DigitaleDeltaModels.Feeder.Reference.FeederRequest/Data" Target="references"/>
+                    <Annotation Term="Org.OData.Capabilities.V1.SortRestrictions">
+                        <Record>
+                            <PropertyValue Property="Sortable" Bool="true"/>
+                            <PropertyValue Property="AscendingOnlyProperties">
+                                <Collection/>
+                            </PropertyValue>
+                            <PropertyValue Property="DescendingOnlyProperties">
+                                <Collection/>
+                            </PropertyValue>
+                            <PropertyValue Property="NonSortableProperties">
+                                <Collection>
+                                    <PropertyPath>Geography</PropertyPath>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Annotation>
+                </EntitySet>
+                <EntitySet Name="observations" EntityType="DigitaleDeltaModels.Observation">
+                    <NavigationPropertyBinding Path="DigitaleDeltaModels.Feeder.Observation.FeederResponse/Data/Value" Target="observations"/>
+                </EntitySet>
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
