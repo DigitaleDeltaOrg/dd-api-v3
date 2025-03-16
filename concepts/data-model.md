@@ -46,7 +46,7 @@ Het model bestaat uit twee hoofdonderdelen: Referenties en Observaties. Je kunt 
 - Referenties zijn de ingrediëntenlijst en keukenspullen
 - Observaties zijn de metingen die we daarmee doen
 
-<img src="data-model.svg" width="100%" alt="Data model DD API V3"/>
+<img src="/concepts/data-model.svg" width="100%" alt="Data model DD API V3"/>
 
 <a id="gedetailleerde-beschrijving"></a>
 ## Gedetailleerde Beschrijving
@@ -345,6 +345,8 @@ Voorbeeld:
 | FoI  | Feature of Interest (meetobject)     |
 | GML  | Geography Markup Language            |
 | UoM  | Unit of Measure (meeteenheid)        |
+
+[🏠 Terug naar index](/dd-api-v3-docs/index.md)
 
 ## Versiehistorie Document
 | Versie | Datum      | Wijzigingen     |

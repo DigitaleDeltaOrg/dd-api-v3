@@ -1,0 +1,1242 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+      "title": "DD-API-V3 - Base schema",
+      "description": "Digitale Delta API V3 ",
+      "license": {
+        "name": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "version": "3.0.0",
+      "x-logo": {
+        "url": "/v3/DigitaleDelta.svg"
+      }
+    },
+    "externalDocs": {
+      "description": "Official documentation",
+      "url": "https://github.com/DigitaleDeltaOrg/dd-api-v3/tree/v3-docs"
+    },
+    "paths": {
+      "/v3/odata/observations": {
+        "description": "Provides access to observations.",
+        "get": {
+          "tags": [
+            "Observation"
+          ],
+          "summary": "Get entities from observations",
+          "description": "Get the observation data of the Digitale Delta API.",
+          "operationId": "observations.Observation.ListObservation",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/top"
+            },
+            {
+              "$ref": "#/components/parameters/skiptoken"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/orderby"
+            },
+            {
+              "$ref": "#/components/parameters/expand"
+            },
+            {
+              "$ref": "#/components/parameters/count"
+            },
+            {
+              "$ref": "#/components/parameters/select"
+            },
+            {
+              "$ref": "#/components/headers/Accept-Crs"
+            },
+            {
+              "$ref": "#/components/headers/prefer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "$ref": "#/components/responses/DigitaleDelta.ObservationCollectionResponse"
+            },
+            "default": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        }
+      },
+      "/v3/odata/references": {
+        "description": "Provides access to resources.",
+        "get": {
+          "tags": [
+            "Reference"
+          ],
+          "summary": "Get entities from references",
+          "description": "Get the reference data of the Digitale Delta API.",
+          "operationId": "references.Reference.ListReference",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/top"
+            },
+            {
+              "$ref": "#/components/parameters/skiptoken"
+            },
+            {
+              "$ref": "#/components/parameters/filter"
+            },
+            {
+              "$ref": "#/components/parameters/orderby"
+            },
+            {
+              "$ref": "#/components/parameters/expand"
+            },
+            {
+              "$ref": "#/components/parameters/count"
+            },
+            {
+              "$ref": "#/components/parameters/select"
+            },
+            {
+              "$ref": "#/components/headers/Accept-Crs"
+            },
+            {
+              "$ref": "#/components/headers/prefer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "$ref": "#/components/responses/DigitaleDelta.ReferenceCollectionResponse"
+            },
+            "default": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "DigitaleDelta.Reference": {
+          "title": "Reference",
+          "type": "object",
+          "description": "A reference is an entity to which observations can refer.",
+          "properties": {
+            "Id": {
+              "type": "string",
+              "description": "Unique ID of the reference."
+            },
+            "Type": {
+              "type": "string",
+              "nullable": true,
+              "description": "Type of the reference"
+            },
+            "Organisation": {
+              "type": "string",
+              "nullable": true,
+              "description": "Organisation responsible for the reference"
+            },
+            "Code": {
+              "type": "string",
+              "description": "Code of the reference"
+            },
+            "Geography": {
+              "$ref": "#/components/schemas/Edm.Geography"
+            },
+            "Description": {
+              "type": "string",
+              "description": "Short description of the reference"
+            }
+          }
+        },
+        "DigitaleDelta.Foi": {
+          "title": "Feature of Interest",
+          "description": "Feature of Interest is scoped to the location in which sampling took place.",
+          "type": "object",
+          "properties": {
+            "Id": {
+              "type": "string",
+              "description": "Id of the Feature of Interest"
+            },
+            "Code": {
+              "type": "string",
+              "description": "Code of the Feature of Interest"
+            },
+            "Geography": {
+              "$ref": "#/components/schemas/Edm.GeographyPoint"
+            },
+            "Description": {
+              "type": "string",
+              "description": "Description of the Feature of Interest"
+            }
+          }
+        },
+        "DigitaleDelta.Observation": {
+          "title": "Observation",
+          "type": "object",
+          "description": "Defines an observation. The type of the observation defines how the results are expressed.",
+          "properties": {
+            "Id": {
+              "type": "string",
+              "description": "Unique ID of the observation"
+            },
+            "Type": {
+              "type": "string",
+              "description": "Type of the observation"
+            },
+            "ResultTime": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "PhenomenonTime": {
+              "$ref": "#/components/schemas/DigitaleDelta.Tm_Period"
+            },
+            "ValidTime": {
+              "$ref": "#/components/schemas/DigitaleDelta.Tm_Period"
+            },
+            "Parameter": {
+              "$ref": "#/components/schemas/DigitaleDelta.ParameterContainer"
+            },
+            "Metadata": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/DigitaleDelta.MetadataContainer"
+                },
+                {
+                  "type": "object",
+                  "nullable": true
+                }
+              ]
+            },
+            "RelatedObservations": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/DigitaleDelta.RelatedObservation"
+              },
+              "x-ms-navigationProperty": true,
+              "description": "Related observations"
+            },
+            "Foi": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/DigitaleDelta.Foi"
+                },
+                {
+                  "type": "object",
+                  "nullable": true
+                }
+              ],
+              "x-ms-navigationProperty": true,
+              "description": "Feature of Interest"
+            },
+            "Result": {
+              "$ref": "#/components/schemas/DigitaleDelta.Result"
+            }
+          }
+        },
+        "DigitaleDelta.RelatedObservation": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/DigitaleDelta.Observation"
+            },
+            {
+              "title": "RelatedObservation",
+              "type": "object",
+              "description": "Defines a related observation",
+              "properties": {
+                "Role": {
+                  "type": "string",
+                  "nullable": true
+                }
+              }
+            }
+          ]
+        },
+        "DigitaleDelta.ParameterContainer": {
+          "title": "ParameterContainer",
+          "type": "object",
+          "properties": {
+            "Parameter": {
+              "type": "string",
+              "nullable": true,
+              "example": "Cl",
+              "description": "Parameter observed. Chemical, biological, physical"
+            },
+            "Compartment": {
+              "type": "string",
+              "nullable": true,
+              "example": "OW",
+              "description": "(Water) compartment in which sampling was performed"
+            },
+            "Quantity": {
+              "type": "string",
+              "nullable": true,
+              "example": "AANTL",
+              "description": "Quantity"
+            },
+            "Organisation": {
+              "type": "string",
+              "nullable": true,
+              "description": "'Owner' of the data of sampling location"
+            },
+            "LimitSymbol": {
+              "type": "string",
+              "nullable": true,
+              "description": "Limit symbol",
+              "example": "<"
+            },
+            "ResultOf": {
+              "type": "string",
+              "nullable": true,
+              "description": "Describes how the result was determined: observed, extrapolated, ...",
+              "example": "observed"
+            }
+          },
+          "description": "Defines the quantifiable references related to the observation"
+        },
+        "DigitaleDelta.MetadataContainer": {
+          "title": "MetadataContainer",
+          "type": "object",
+          "description": "Non-quantifiable data"
+        },
+        "DigitaleDelta.Result": {
+          "title": "Result",
+          "type": "object",
+          "properties": {
+            "Id": {
+              "type": "string",
+              "description": "Unique ID of the result"
+            },
+            "Truth": {
+              "type": "boolean",
+              "nullable": true,
+              "description": "Truth observation. Can only result in true or false"
+            },
+            "Count": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "format": "int64"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "nullable": true,
+              "description": "Count observation. No unit specified and the value can only be a integer value"
+            },
+            "Measure": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/DigitaleDelta.Measure"
+                },
+                {
+                  "type": "object",
+                  "nullable": true
+                }
+              ],
+              "description": "Result is expressed in a unit and a value"
+            },
+            "Vocab": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/DigitaleDelta.CategoryVerb"
+                },
+                {
+                  "type": "object",
+                  "nullable": true
+                }
+              ],
+              "description": "Result is expressed in a vocabulary"
+            },
+            "Coverage": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Coverage"
+                },
+                {
+                  "type": "object",
+                  "nullable": true
+                }
+              ],
+              "description": "Result is expressed in a vocabulary"
+            },
+            "Geography": {
+              "$ref": "#/components/schemas/Edm.Geography"
+            }
+          }
+        },
+        "DigitaleDelta.Measure": {
+          "title": "Measure",
+          "type": "object",
+          "properties": {
+            "Uom": {
+              "type": "string",
+              "description": "Unit of Measurement"
+            },
+            "Value": {
+              "oneOf": [
+                {
+                  "type": "number",
+                  "format": "decimal"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "description": "Measured value"
+            }
+          }
+        },
+        "DigitaleDelta.CategoryVerb": {
+          "title": "CategoryVerb",
+          "type": "object",
+          "properties": {
+            "Vocabulary": {
+              "type": "string",
+              "description": "Vocabulary"
+            },
+            "Term": {
+              "type": "string",
+              "description": "Term within the vocabulary"
+            }
+          }
+        },
+        "Edm.Geography": {
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/Edm.GeographyPoint"
+            },
+            {
+              "$ref": "#/components/schemas/Edm.GeographyLineString"
+            },
+            {
+              "$ref": "#/components/schemas/Edm.GeographyPolygon"
+            },
+            {
+              "$ref": "#/components/schemas/Edm.GeographyMultiPoint"
+            },
+            {
+              "$ref": "#/components/schemas/Edm.GeographyMultiLineString"
+            },
+            {
+              "$ref": "#/components/schemas/Edm.GeographyMultiPolygon"
+            },
+            {
+              "$ref": "#/components/schemas/Edm.GeographyCollection"
+            }
+          ],
+          "discriminator": {
+            "propertyName": "type"
+          }
+        },
+        "Edm.GeographyPoint": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "Point"
+              ]
+            },
+            "coordinates": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            }
+          }
+        },
+        "Edm.GeographyLineString": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "LineString"
+              ]
+            },
+            "coordinates": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 2
+              },
+              "minItems": 2
+            }
+          }
+        },
+        "Edm.GeographyPolygon": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "Polygon"
+              ]
+            },
+            "coordinates": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 2
+                },
+                "minItems": 4
+              }
+            }
+          }
+        },
+        "Edm.GeographyMultiPoint": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "MultiPoint"
+              ]
+            },
+            "coordinates": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 2
+              }
+            }
+          }
+        },
+        "Edm.GeographyMultiLineString": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "MultiLineString"
+              ]
+            },
+            "coordinates": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 2
+                },
+                "minItems": 2
+              }
+            }
+          }
+        },
+        "Edm.GeographyMultiPolygon": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "MultiPolygon"
+              ]
+            },
+            "coordinates": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 2
+                  },
+                  "minItems": 4
+                }
+              }
+            }
+          }
+        },
+        "Edm.GeographyCollection": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "GeometryCollection"
+              ]
+            },
+            "geometries": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/Edm.Geography"
+              }
+            }
+          }
+        },
+        "DigitaleDelta.ODataErrors.ODataError": {
+          "required": [
+            "error"
+          ],
+          "type": "object",
+          "properties": {
+            "error": {
+              "$ref": "#/components/schemas/DigitaleDelta.ODataErrors.MainError"
+            }
+          },
+          "description": "Describes OData errors"
+        },
+        "DigitaleDelta.ODataErrors.MainError": {
+          "required": [
+            "code",
+            "message"
+          ],
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            },
+            "target": {
+              "type": "string",
+              "nullable": true
+            },
+            "details": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/DigitaleDelta.ODataErrors.ErrorDetails"
+              }
+            },
+            "innererror": {
+              "$ref": "#/components/schemas/DigitaleDelta.ODataErrors.InnerError"
+            }
+          }
+        },
+        "DigitaleDelta.ODataErrors.ErrorDetails": {
+          "required": [
+            "code",
+            "message"
+          ],
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            },
+            "target": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        },
+        "DigitaleDelta.Tm_Period": {
+          "type": "object",
+          "properties": {
+            "BeginPosition": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "EndPosition": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        },
+        "DigitaleDelta.ODataErrors.InnerError": {
+          "type": "object",
+          "description": "The structure of this object is service-specific"
+        },
+        "ODataCountResponse": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "DigitaleDelta.ReferenceCollectionResponse": {
+          "title": "Collection of References",
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/BaseCollectionPaginationCountResponse"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DigitaleDelta.Reference"
+                  }
+                }
+              }
+            }
+          ],
+          "example": {
+            "@odata.context": "https://localhost:7071/v3/odata/$metadata#references",
+            "value": [
+              {
+                "Id": "51417e37-b2f1-4a0f-94d5-ba26225b6565",
+                "Type": "Parameter",
+                "Organisation": "TWN",
+                "Code": "Hyperia galba",
+                "Description": "Hyperia galba",
+                "TaxonRank": "Species",
+                "TaxonAuthors": "(Montagu, 1815)",
+                "TaxonStatusCode": "10"
+              }
+            ],
+            "@odata.nextLink": "https://localhost:7071/v3/odata/references?$filter=contains(Code%2c++%27alba%27)&$top=1&$skip=1"
+          }
+        },
+        "DigitaleDelta.ObservationCollectionResponse": {
+          "title": "Collection of Observation",
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/BaseCollectionPaginationCountResponse"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DigitaleDelta.Observation"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "DigitaleDelta.RelatedObservationCollectionResponse": {
+          "title": "Collection of RelatedObservation",
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/BaseCollectionPaginationCountResponse"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DigitaleDelta.RelatedObservation"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "BaseCollectionPaginationCountResponse": {
+          "title": "Base collection pagination and count responses",
+          "type": "object",
+          "properties": {
+            "@odata.count": {
+              "type": "integer",
+              "format": "int64",
+              "nullable": true
+            },
+            "@odata.nextLink": {
+              "type": "string",
+              "nullable": true,
+              "description": "URL to retrieve the next page of results"
+            }
+          }
+        },
+        "Coverage": {
+          "type": "object",
+          "required": [
+            "type",
+            "domain",
+            "parameters",
+            "ranges"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "Coverage"
+              ]
+            },
+            "domain": {
+              "$ref": "#/components/schemas/Domain"
+            },
+            "parameters": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/components/schemas/Parameter"
+              }
+            },
+            "ranges": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/components/schemas/Range"
+              }
+            }
+          }
+        },
+        "Domain": {
+          "type": "object",
+          "required": [
+            "type",
+            "axes"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "Domain"
+              ]
+            },
+            "axes": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/components/schemas/Axis"
+              }
+            },
+            "referencing": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/Reference"
+              }
+            }
+          }
+        },
+        "Axis": {
+          "type": "object",
+          "required": [
+            "values"
+          ],
+          "properties": {
+            "values": {
+              "type": "array",
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              }
+            },
+            "start": {
+              "type": "number"
+            },
+            "stop": {
+              "type": "number"
+            },
+            "num": {
+              "type": "integer"
+            }
+          }
+        },
+        "Parameter": {
+          "type": "object",
+          "required": [
+            "type"
+          ],
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "observedProperty": {
+              "$ref": "#/components/schemas/ObservedProperty"
+            },
+            "unit": {
+              "$ref": "#/components/schemas/Unit"
+            },
+            "categoryEncoding": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "ObservedProperty": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "label": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "description": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "categories": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/Category"
+              }
+            }
+          }
+        },
+        "Category": {
+          "type": "object",
+          "required": [
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "label": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "description": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "Unit": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "label": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "symbol": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "Range": {
+          "type": "object",
+          "required": [
+            "type",
+            "values"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "NdArray"
+              ]
+            },
+            "dataType": {
+              "type": "string",
+              "enum": [
+                "float",
+                "integer",
+                "string"
+              ]
+            },
+            "values": {
+              "type": "array",
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array"
+                  }
+                ]
+              }
+            },
+            "axisNames": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "shape": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "Reference": {
+          "type": "object",
+          "required": [
+            "system"
+          ],
+          "properties": {
+            "system": {
+              "type": "string"
+            },
+            "components": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "error": {
+          "description": "error",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DigitaleDelta.ODataErrors.ODataError"
+              }
+            }
+          }
+        },
+        "ODataCountResponse": {
+          "headers": {
+            "Content-Crs": {
+              "$ref": "#/components/headers/Content-Crs"
+            }
+          },
+          "description": "The count of the resource",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "$ref": "#/components/schemas/ODataCountResponse"
+              }
+            }
+          }
+        },
+        "DigitaleDelta.ReferenceCollectionResponse": {
+          "description": "Retrieved collection",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DigitaleDelta.ReferenceCollectionResponse"
+              }
+            }
+          },
+          "headers": {
+            "Content-Crs": {
+              "$ref": "#/components/headers/Content-Crs"
+            },
+            "API-Version": {
+              "$ref": "#/components/headers/API-Version"
+            },
+            "API-Deprecation-Date": {
+              "$ref": "#/components/headers/API-Deprecation-Date"
+            },
+            "API-End-of-Life-Date": {
+              "$ref": "#/components/headers/API-End-of-Life-Date"
+            },
+            "API-Next-Release": {
+              "$ref": "#/components/headers/API-Next-Release"
+            }
+          }
+        },
+        "DigitaleDelta.ObservationCollectionResponse": {
+          "description": "Retrieved collection",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DigitaleDelta.ObservationCollectionResponse"
+              }
+            }
+          },
+          "headers": {
+            "Content-Crs": {
+              "$ref": "#/components/headers/Content-Crs"
+            },
+            "API-Version": {
+              "$ref": "#/components/headers/API-Version"
+            },
+            "API-Deprecation-Date": {
+              "$ref": "#/components/headers/API-Deprecation-Date"
+            },
+            "API-End-of-Life-Date": {
+              "$ref": "#/components/headers/API-End-of-Life-Date"
+            },
+            "API-Next-Release": {
+              "$ref": "#/components/headers/API-Next-Release"
+            }
+          }
+        },
+        "DigitaleDelta.RelatedObservationCollectionResponse": {
+          "description": "Retrieved collection",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DigitaleDelta.RelatedObservationCollectionResponse"
+              }
+            }
+          }
+        }
+      },
+      "parameters": {
+        "top": {
+          "name": "$top",
+          "in": "query",
+          "description": "Show only the first n items",
+          "style": "form",
+          "explode": false,
+          "schema": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "examples": {
+            "simple": {
+              "value": 1
+            }
+          }
+        },
+        "skiptoken": {
+          "name": "$skiptoken",
+          "in": "query",
+          "description": "The skip token, used to retrieve the next page of data. Generated by the service.",
+          "schema": {
+            "type": "string"
+          }
+        },
+        "orderby": {
+          "name": "$orderby",
+          "in": "query",
+          "description": "Order the results by.",
+          "schema": {
+            "type": "string"
+          }
+        },
+        "expand": {
+          "name": "$expand",
+          "in": "query",
+          "description": "Expands selected entities.",
+          "schema": {
+            "type": "string"
+          }
+        },
+        "select": {
+          "name": "$select",
+          "in": "query",
+          "description": "Select the properties to return.",
+          "schema": {
+            "type": "string"
+          }
+        },
+        "count": {
+          "name": "$count",
+          "in": "query",
+          "description": "Include count of items",
+          "style": "form",
+          "explode": false,
+          "schema": {
+            "type": "boolean"
+          }
+        },
+        "filter": {
+          "name": "$filter",
+          "in": "query",
+          "description": "Filter items by property values",
+          "style": "form",
+          "explode": false,
+          "schema": {
+            "type": "string"
+          }
+        }
+      },
+      "headers": {
+        "API-Version": {
+          "description": "The version of the API.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "examples": {
+            "simple": {
+              "value": "3.0.0"
+            }
+          }
+        },
+        "API-Deprecation-Date": {
+          "description": "The date that the API will be deprecated.",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "API-End-of-Life-Date": {
+          "description": "The date that the API will be end-of-life.",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "API-Next-Release": {
+          "description": "Next release version of the API.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        "prefer": {
+          "description": "Prefer header, i.e. for null-suppression",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+        "Accept-Crs": {
+          "description": "The Coordinate Reference System (CRS) that the client prefers. 4258 is the default.",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+        "Content-Crs": {
+          "description": "The Coordinate Reference System (CRS) response conforms to. 4258 is the default.",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "tags": [
+      {
+        "name": "Reference"
+      },
+      {
+        "name": "Observation"
+      }
+    ]
+  }

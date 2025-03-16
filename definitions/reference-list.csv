@@ -1,0 +1,66 @@
+Name,Type,Description,PropertyPlacement,Nullable,Added,Nl,System
+SetComment,Edm.String,Opmerking bij een meetset,Metadata,false,2024-03-15T12:00:00Z,Meetset opmerking,AquaDesk
+ObservationComment,Edm.String,Opmerking bij een observatie,Metadata,false,2024-03-15T12:00:00Z,Observatie opmerking,AquaDesk
+CollectionComment,Edm.String,Opmerking bij een collectie (monster),Metadata,false,2024-03-15T12:00:00Z,Collectie opmerking,AquaDesk
+ModifiedOn,Edm.DateTimeOffset,Datum creatie/wijziging,Metadata,false,2024-03-15T12:00:00Z,Wijzigingsdatum,AquaDesk
+Projects,string[],Projecten voor welke deze observatie is uitgevoerd,Metadata,false,2024-03-15T12:00:00Z,Projecten,All
+EcotopeSystem,Edm.String,Ecotope system,Parameter,false,2024-03-15T12:00:00Z,Ecotoop classificatie systeem,Aquo
+WaterSystem,Edm.String,KRW Watertype,Parameter,false,2024-03-15T12:00:00Z,KRW watersysteem,KRW
+TaxonAuthors,Edm.String,Taxon authors,Parameter,false,2024-03-15T12:00:00Z,Taxon auteurs,TWN
+OrganisationNamespace,Edm.String,Aquo organisation namespace,Parameter,false,2024-03-15T12:00:00Z,Aquo namespace voor de organisatie,Aquo
+MonitoringNetworks,Edm.String,Monitoring networks,Parameter,false,2024-03-15T12:00:00Z,Meetnetten,AquaDesk
+CasNumber,Edm.String,CAS Registry Number,Parameter,false,2024-03-15T12:00:00Z,CAS nummer bij chemie,AquaDesk
+TaxonRank,Edm.String,Taxon rank,Parameter,false,2024-03-15T12:00:00Z,Taxonniveau volgens TWN,TWN
+Files,Edm.String,Associated files,Reference,false,2024-03-15T12:00:00Z,Gerelateerde bestanden,All
+Weighting,Edm.String,Relative weight of the measurement object,Reference,false,2024-03-15T12:00:00Z,Relatief gewicht van het meetobject,AquaDesk
+Start,Edm.DateTimeOffset,Start date of project,Reference,false,2024-03-15T12:00:00Z,Startdatum project,All
+End,Edm.DateTimeOffset,Endt date of project,Reference,false,2024-03-15T12:00:00Z,Einddatum project,All
+TwnStatus,Edm.String,Taxon status according to TWN,Parameter,false,2024-03-15T12:00:00Z,TWN taxon status,TWN
+MaxValue,Edm.String,Maximum value of unit,Reference,false,2024-03-15T12:00:00Z,Maximale waarde van eenheid,All
+MinValue,Edm.String,Minimum value of unit,Reference,false,2024-03-15T12:00:00Z,Minimale waarde van eenheid,All
+Citation,Edm.String,Taxon literature reference,Metadata,false,2024-03-15T12:00:00Z,Taxon literatuur referentie,TWN
+Symbol,Edm.String,Unit symbol,Parameter,false,2024-03-15T12:00:00Z,Symbool van de eenheid,Aquo
+KrwCode,Edm.String,KRW classification,Parameter,false,2024-03-15T12:00:00Z,KRE classificatie,Aquo
+TaxonType,Edm.String,Taxon type,Parameter,false,2024-03-15T12:00:00Z,Taxontype,TWN
+TwnCode,Edm.String,Taxon TWN code,Parameter,false,2024-03-15T12:00:00Z,Taxon TWN code,TWN
+TaxonNameNl,Edm.String,Taxon name in Dutch,Parameter,false,2024-03-15T12:00:00Z,Nederlandse taxon naam,TWN
+TaxonGroup,Edm.String,Group of the taxon,Parameter,false,2024-03-15T12:00:00Z,Taxongroep,TWN
+MeasurementObjects,Edm.String,Measurement objects withing the monitoring network,Reference,false,2024-03-15T12:00:00Z,Meetobjecten binnen een meetnet,All
+Literature,Edm.String,Taxon literature,Reference,false,2024-03-15T12:00:00Z,Taxon literatuur,TWN
+ParameterType,Edm.String,Parameter type,Parameter,false,2024-03-15T12:00:00Z,"Soort parameter (CHEMS, TAXON, BIOTG, FYSIO)",AquaDesk
+AreaType,Edm.String,Area type,Reference,false,2024-03-15T12:00:00Z,Gebiedssoort,Sovon
+IsReportingMeasurementObject,Edm.String,Is reporting point to another measurement object,Reference,false,2024-03-15T12:00:00Z,Is rapportagepunt,AquaDesk
+LengthClass,Edm.String,Length class,Parameter,false,2024-03-15T12:00:00Z,Lengteklasse,Aquo
+Organisation,Edm.String,Organisation code,Parameter,false,2024-03-15T12:00:00Z,Organisatie code,Aquo
+MeasurementPackage,Edm.String,Measurement package,Parameter,false,2024-03-15T12:00:00Z,Meetpakket,AquaDesk
+GrainSizeFraction,Edm.String,Grain size fraction,Parameter,false,2024-03-15T12:00:00Z,Korrelgroottefractie,Aquo
+Behaviour,Edm.String,Behaviour,Parameter,false,2024-03-15T12:00:00Z,Gedrag,Aquo
+Capacity,Edm.String,Capacity,Parameter,false,2024-03-15T12:00:00Z,Hoedanigheid,Aquo
+MeasurementPosition,Edm.String,Measurement position,Parameter,false,2024-03-15T12:00:00Z,Meetpositie,Aquo
+GrainDiameter,Edm.String,Grain diameter,Parameter,false,2024-03-15T12:00:00Z,Korreldiameter,Aquo
+Sampler,Edm.String,Sampling organisation,Parameter,false,2024-03-15T12:00:00Z,Bemonsterende organisatie,All
+SamplingMethod,Edm.String,Sampling method,Parameter,false,2024-03-15T12:00:00Z,Bemonsteringsmethode,All
+Supplier,Edm.String,Data supplier,Parameter,false,2024-03-15T12:00:00Z,(Data) leverancier,All
+AnalysisMethod,Edm.String,Analysis method,Parameter,false,2024-03-15T12:00:00Z,Analysemethode,Aquo
+Quantity,Edm.String,Quantity,Parameter,false,2024-03-15T12:00:00Z,Grootheid,Aquo
+LifeForm,Edm.String,Life form,Parameter,false,2024-03-15T12:00:00Z,Levensvorm,Aquo
+SizeClassLengthInMm,Edm.String,Size classification in millimeters for length,Parameter,false,2024-03-15T12:00:00Z,Lengteklasse in millimeters,AquaDesk
+Parameter,Edm.String,Measured parameter,Parameter,false,2024-03-15T12:00:00Z,Geobserveerde parameter,Aquo
+TaxonStatus,Edm.String,Status of the taxon,Parameter,false,2024-03-15T12:00:00Z,Taxon status,TWN
+ValuationTechnique,Edm.String,Valuation method,Parameter,false,2024-03-15T12:00:00Z,Waardebepalingsmethode,Aquo
+ValueProcessingMethod,Edm.String,Value processing method,Parameter,false,2024-03-15T12:00:00Z,Waardebewerkingsmethode,Aquo
+Appearance,Edm.String,Appearance,Parameter,false,2024-03-15T12:00:00Z,Verschijningsvorm,Aquo
+Completeness,Edm.String,Completeness (of the result),Parameter,false,2024-03-15T12:00:00Z,Compleetheid van het resultaat,Aquo
+SizeClassLengthInCm,Edm.String,Size classification in centimeters for length,Parameter,false,2024-03-15T12:00:00Z,Lengteklasse in centimeters,AquaDesk
+Sediment,Edm.String,Sediment,Parameter,false,2024-03-15T12:00:00Z,Sediment,Aquo
+LifeStage,Edm.String,Life stage,Parameter,false,2024-03-15T12:00:00Z,Levensstadium,Aquo
+Purpose,Edm.String,Purpose of the observation,Parameter,false,2024-03-15T12:00:00Z,Meetdoel,AquaDesk
+SizeClassWidthInMm,Edm.String,Size classification in millimeters for width,Parameter,false,2024-03-15T12:00:00Z,Breedteklasse in millimeters,AquaDesk
+Habitat,Edm.String,Habitat,Parameter,false,2024-03-15T12:00:00Z,Habitat,Aquo
+ProjectMethod,Edm.String,Project specific method used,Parameter,false,2024-03-15T12:00:00Z,Project-specifieke methode,AquaDesk
+Statistic,Edm.String,Statistic,Parameter,false,2024-03-15T12:00:00Z,Statistiek,Aquo
+Condition,Edm.String,Condition,Parameter,false,2024-03-15T12:00:00Z,Conditie,Aquo
+RecordingMethod,Edm.String,Recording method,Parameter,false,2024-03-15T12:00:00Z,Opnamemethode,AquaDesk
+Compartment,Edm.String,Compartment,Parameter,false,2024-03-15T12:00:00Z,Compartiment,Aquo
+AnalysisPackage,Edm.String,Analysis package,Parameter,false,2024-03-15T12:00:00Z,Analyse pakket,AquaDesk
+Gender,Edm.String,Gender,Parameter,false,2024-03-15T12:00:00Z,Geslacht,Aquo
